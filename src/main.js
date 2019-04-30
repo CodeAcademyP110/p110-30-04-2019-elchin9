@@ -1,90 +1,138 @@
-//handle tab click
 $(document).ready(function () {
-    "use strict";
-    // let counter = 1;
-    // $(".my-btn").on("click", BtnClickHandler);
+	$(document).on("click", ".chatSmall", function () {
+		$(this).hide();
+		$(".chat-big").show();
+	});
+	$(document).on("click", ".bigSmile", function () {
+		$(".smile").toggle();
+	});
+	$(document).on("click", ".line", function () {
+		$(".chat-big").hide();
+		$(".chatSmall").show();
+	});
 
-    // function BtnClickHandler()
-    // {
-    //     if(counter <= 3) 
-    //         alert(`Clicked on button ${counter++} times!`); 
-    //     else
-    //     $(".my-btn").off("click", BtnClickHandler);
-    // }
+	const input = document.querySelector('#myInput');
+	const chat = document.querySelector(".chat-content");
+	const deleteMsg = document.querySelector('.deleted');
 
-    //live event binding
-    // $(document).on("click", ".my-btn", function()
-    // {
-    //     alert("Buttona click olundu.");
-    // })
+	$(document).on("click", ".send", function (e) {
+			const userInput = input.value.trim();
 
-    // $(".btn-add").click(function(){
-    //     $(".my-btn:first-child").clone().appendTo($(".btn-holder"));
-    // })
+			const checkInput = document.createElement('input');
+			const pic = document.createElement('div');
+			const para = document.createElement('p');
+			const div = document.createElement('div');
 
-    // $(document).on("click", ".btn-add", function () {
-    //     //$(".test").hide(2000);
-    //     // let allTests = $(this).prev().children();
-    //     // allTests.eq(Math.floor(allTests.length / 2)).toggle(2000);
+			if (userInput[0].toUpperCase() === userInput[0]) 
+			{
+				pic.className = "imageLeft";
+				div.classList.add("left");
+			}
+			else 
+			{
+				div.classList.add("right");
+				pic.className = "imageRight";
+			}
 
-    //     const that = this;
-    //     $(this).prev().children().first()
-    //         .animate({
-    //             "width": "+=50px",
-    //             "padding": "20px",
-    //             "border-width": "10px"
-    //         }, 2000, function () {
-    //             $(that).text("Changed");
-    //         });
-    // })
+			pic.onmouseover = function () 
+			{
 
-    // $(document).on("click", ".test", function(){
-    //     $(this).text(function(i, origText){
-    //         console.log(i);
-            
-    //         return origText + " Changed"
-    //     });
-    // })
+				if (pic.className === 'imageLeft') 
+				{
+					this.style.backgroundImage = 'url(images/call-smile.jpg)';
+				}
+				return;
+			}
+			pic.onmouseout = function () 
+			{
 
-    // $(document).on("click", ".btn-add", function(){
-    //     $(".test").text(function(i, origText){
-    //         return "Changed " + i + " " + origText;
-    //      })
-    // })
+				if (pic.className === 'imageLeft') 
+				{
+					this.style.backgroundImage = 'url(images/call.jpg)';
+				}
+				return;
+			}
 
-    // $(document).on("click", ".btn-add", function(){
-    //     // const newP = $("<p>").text("demo").addClass("demo");
-    //     $(this).prev().slideUp(2000, function(){
-    //         $(this).remove();
-    //     });
-    // })
+			pic.onclick = function deletePic() {
+				div.classList.toggle('changeDiv');
+				if (div.classList.contains("changeDiv")) 
+				{
+					deleteMsg.classList.add('d-block');
+				}
+				else 
+				{
+					deleteMsg.classList.remove('d-block');
+				}
+			}
+			$(document).on("click", ".deleted", function () 
+			{
+				$("div.changeDiv").remove();
+			});
 
+			para.innerText = userInput;
+			div.appendChild(para);
+			div.appendChild(pic);
+			chat.appendChild(div);
 
-    //AJAX
-    $(document).on("click", ".btn-load", function(){
-        // $.ajax({
-        //     url: "https://jsonplaceholder.typicode.com/posts",
-        //     type: "GET",
-        //     success: function(res){
-        //         console.log(res);
-        //     }
-        // });
+			input.value = "";
+	});
 
-        $.get("https://jsonplaceholder.typicode.com/posts", function(res){
-            $(res).each(function(i, el){
-                const div = $("<div>").addClass("col-4");
-                $("<h2>").text(el.title.substring(0, 30)).appendTo(div);
-                $("<p>").text(el.body.substring(0, 50)).appendTo(div);
+	$(document).on("keydown", "#myInput", Chat);
 
-                $("#posts").append(div);
-            })
+	function Chat(e) {
 
-            // $(res).each((i, el) => {
-            //     console.log(i, el);
-            // })
-        })
-    });
+		if (e.keyCode === 13 && e.shiftKey === false) {
+			const userInput = input.value.trim();
 
-})
+			const checkInput = document.createElement('input');
+			const pic = document.createElement('div');
+			const para = document.createElement('p');
+			const div = document.createElement('div');
 
+			if (userInput[0].toUpperCase() === userInput[0]) {
+				pic.className = "imageLeft";
+				div.classList.add("left");
+			}
+			else {
+				div.classList.add("right");
+				pic.className = "imageRight";
+			}
+
+			pic.onmouseover = function () {
+
+				if (pic.className === 'imageLeft') {
+					this.style.backgroundImage = 'url(images/call-smile.jpg)';
+				}
+				return;
+			}
+			pic.onmouseout = function () {
+
+				if (pic.className === 'imageLeft') {
+					this.style.backgroundImage = 'url(images/call.jpg)';
+				}
+				return;
+			}
+
+			pic.onclick = function deletePic() {
+				div.classList.toggle('changeDiv');
+				if (div.classList.contains("changeDiv")) {
+					deleteMsg.classList.add('d-block');
+				}
+				else {
+					deleteMsg.classList.remove('d-block');
+				}
+			}
+			$(document).on("click", ".deleted", function () {
+				$("div.changeDiv").remove();
+			});
+
+			para.innerText = userInput;
+			div.appendChild(para);
+			div.appendChild(pic);
+			chat.appendChild(div);
+
+			input.value = "";
+		}
+	}
+});
 
