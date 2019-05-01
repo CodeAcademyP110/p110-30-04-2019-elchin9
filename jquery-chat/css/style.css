@@ -1,0 +1,284 @@
+body{
+	position: relative;
+}
+.chat-wrapper{
+	height: 700px;
+}
+.chatInner i:last-child{
+	transform: rotate(40deg);
+	color: white;
+	font-size: 20px;
+	transition: all .3s linear;
+}
+.chatInner i:last-child:hover{
+	color: #444;
+}
+.chatInner{
+	background: #1E90FF;
+	color: white;
+	font-size: 15px;
+	padding: 15px;
+	height: 40px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+}
+.chat-content{
+	padding: 0 15px;
+	height: 430px;
+	padding-bottom: 100px;
+    overflow-y:auto;
+}
+.chat-menu{
+	width: 1000px;
+	height: 500px;
+	background: #2F4F4F;
+	border-radius: 20px;
+}
+.chatOut{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.chatOut{
+	width: 250px;
+	height: 100px;
+	position: absolute;
+	bottom: 37px;
+	right: -190;
+	transition: all .5s linear;
+	opacity: 0;
+}
+.chat-mini{
+	position: relative;
+	bottom: 0;
+	right: 0;
+	height: 40px;
+	width: 205px;
+	overflow: hidden;
+}
+.chatOut img{
+	width: 100px;
+	height: 120px;
+}
+.chat-big{
+    display: none;
+}
+.chatOut p{
+	font-size: 15px;
+	padding: 5px 10px;
+	color: white;
+	background: #2F4F4F;
+	border-radius: 20px;
+	transition-delay: .4s;
+}
+.deleted:hover{
+	color: #444;
+}
+.chat-heading{
+	background: #1E90FF;
+	color: white;
+	font-size: 15px;
+	position: relative;
+	padding: 20px;
+	border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+.deleteMessage {
+	position: absolute;
+	right: 0;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+.line{
+    font-size: 20px;
+}
+.line:hover{
+	color: red;
+}
+.deleteMessage i{
+	margin-left:20px;
+	margin-right: 5px;
+}
+.send-message{
+	background: #2F4F4F;
+	padding: 15px;
+	border-radius: 20px;
+	margin-top: 50px;
+	position: relative;
+}
+input{
+	height: 30px;
+	width: 85%;
+	background: transparent;
+	outline: transparent;
+	border:none;
+	margin-left: 10px;
+	color: white;
+}
+.send-message i{
+	color: #00BFFF;
+	padding: 10px;
+	font-size: 25px;
+	margin-left: 10px;
+}
+.send-message i:last-child{
+	color: white;
+	border:none;
+	font-size: 40px;
+}
+.chat-mini:hover .chatOut{
+	bottom: 49px;
+	right: 0;
+	opacity: 1;
+}
+.chatInner{
+    display: flex;
+    align-items: center;
+}
+.chat-mini:hover{
+	overflow: visible;
+}
+.contentInner{
+	border-bottom: 1px solid gray;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+}
+.contentInner img{
+	width: 50px;
+	height: 50px;
+	border-radius: 15px;
+}
+.deleted{
+    display: none;
+}
+.bigSmile{
+	font-size: 60px;
+}
+.contentInner p{
+	margin-bottom: 0;
+	margin-left: 20px;
+	color: white;
+}
+.chatOut p{
+	z-index: 1;
+}
+.send-message{
+    display: flex;
+    align-items: center;
+}
+.smile{
+    display: none;
+}
+.online{
+    position: absolute;
+    top: 30px;
+    left: 3px;
+    background-color:#1E90FF;
+    transition: all 1s ease;
+    width: 128px;
+    height: 40px;
+    border-radius: 40px;
+    animation: attack 1s ease infinite;
+}
+@keyframes attack {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+.chatSmall{
+	position: fixed;
+	bottom: 0;
+    right: 99px;
+    display: flex;
+    justify-content: end;
+}
+.imageLeft{
+	width: 50px;
+	height: 50px;
+	border-radius: 15px;
+	background-image: url(../images/call.jpg);
+	background-size: cover;
+	display: inline-block;
+	display: flex;
+	order: -1
+}
+.left, .right{
+    border-bottom: 1px solid gray;
+    padding: 20px 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.left p{
+	margin:0;
+	margin-left: 20px;
+}
+.changeDiv{
+	background: #223333;
+	padding: 20px 20px;
+	border-radius: 20px;
+}
+.right p{
+	margin:0;
+}
+.right{ 
+    justify-content: flex-end;
+}
+.imageRight{
+    width: 50px;
+	height: 50px;
+	border-radius: 15px;
+	background-image: url(../images/users.jpg);
+	background-size: cover;
+	display: inline-block;
+	margin-left: 20px;
+}
+.send{
+    border:2px solid #00BFFF;
+	border-radius: 50%;
+}
+.smile{
+	width: 300px;
+	height: 210px;
+	position: absolute;
+	bottom: 70px;
+	right: -50px;
+	background: #1E90FF;
+	border-radius: 0;
+	border-radius: 20px;
+	padding:10px 0;
+}
+.smile i{
+	font-size: 40px;
+	color: white;
+	transition: all .1s linear;
+}
+.smile::before{
+	content:"";
+    border-style: solid;
+    border-width: 10px 15px 10px 0;
+    border-color: transparent #1E90FF transparent transparent;
+    position: absolute;
+    left: 152px;
+    bottom: -15px;
+    transform: rotate(270deg);
+}
+.smile i:hover{
+	transform: scale(1.5);
+	color: black;
+}
